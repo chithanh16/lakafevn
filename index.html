@@ -5,8 +5,15 @@
   <title>LAKAFÉ VN</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
 
     /* TOPBAR */
     .topbar {
@@ -18,9 +25,20 @@
       justify-content: space-between;
       align-items: center;
     }
-    .topbar a { color: #fff; text-decoration: none; margin-right: 10px; }
-    .topbar a:hover { text-decoration: underline; }
-    .topbar i { margin-right: 5px; }
+
+    .topbar a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .topbar a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar i {
+      margin-right: 5px;
+    }
 
     /* HEADER */
     .header {
@@ -30,19 +48,24 @@
       padding: 15px 20px;
       border-bottom: 1px solid #ccc;
     }
+
     .logo a {
       font-size: 28px;
       font-weight: bold;
       text-decoration: none;
       color: #e60f0f;
     }
-    .logo a span { color: #de1920; }
+
+    .logo a span {
+      color: #de1920;
+    }
 
     .search-box {
       flex: 1;
       margin: 0 40px;
       display: flex;
     }
+
     .search-box input {
       flex: 1;
       padding: 8px 12px;
@@ -51,6 +74,7 @@
       border-radius: 4px 0 0 4px;
       font-size: 14px;
     }
+
     .search-box button {
       padding: 8px 15px;
       border: 1px solid #ccc;
@@ -59,10 +83,19 @@
       border-radius: 0 4px 4px 0;
       cursor: pointer;
     }
-    .search-box button:hover { background-color: #a68e5a; }
 
-    .cart a { text-decoration: none; color: #3c2f2f; }
-    .cart i { margin-right: 5px; }
+    .search-box button:hover {
+      background-color: #a68e5a;
+    }
+
+    .cart a {
+      text-decoration: none;
+      color: #3c2f2f;
+    }
+
+    .cart i {
+      margin-right: 5px;
+    }
 
     /* MENU NGANG */
     .top-menu {
@@ -71,13 +104,15 @@
       gap: 40px;
       padding: 20px 0;
     }
+
     .top-menu a {
       text-decoration: none;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: bold;
       color: red;
       padding: 5px 10px;
     }
+
     .top-menu a.active::after {
       content: "";
       display: block;
@@ -92,26 +127,29 @@
       width: 250px;
       font-family: Arial, sans-serif;
       border: 1px solid #ccc;
-      position: relative;
-      top: -10px;
-      left: 100px;
+      float: left;
+      margin: 20px 0 0 100px;
     }
+
     .sidebar-header {
       background-color: #c2a875;
       color: white;
       font-weight: bold;
       padding: 10px;
     }
+
     .menu {
       max-height: 200px;
       overflow-y: auto;
     }
+
     .menu-item {
       padding: 10px;
       border-bottom: 1px solid #eee;
       position: relative;
       cursor: default;
     }
+
     .menu-item .arrow {
       color: #c2a875;
       margin-right: 8px;
@@ -121,66 +159,127 @@
     .submenu {
       display: none;
       padding-left: 30px;
-      list-style-type: disc;  /* Dấu chấm đen */
+      list-style-type: disc;
     }
+
     .submenu-item {
       padding: 6px 0;
       color: #444;
     }
+
     .menu-item.active .submenu {
       display: block;
     }
 
-    /* BANNER */
-    .image-container {
-      text-align: right;
-      position: relative;
-      margin-left: 390px;
-      margin-top: 10px;
+    .arrow.rotated {
+      transform: rotate(90deg);
     }
+
+    /* BANNER */
+   .banner-wrapper {
+  margin: 20px auto 20px auto; /* đẩy lên 40px */
+  display: flex;
+  padding-left: 30px;
+}
+
     #slider {
-      width: 850px;
-      margin-right: 260px;
-      margin-top: -270px;
+      width: 100%;
+      max-width: 850px;
+      height: auto;
       border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
       transition: opacity 0.5s ease;
     }
 
+    /* TIÊU ĐỀ */
+    .section-title {
+  display: inline-block;
+  padding: 14px 36px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+background: linear-gradient(to right, white, red, white);
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  top: -5px;
+  margin: 30px auto 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.section-title:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
     /* SẢN PHẨM */
-    .product-list {
-      display: flex;
-      gap: 70px;
-      margin-left: 50px;
-      margin-top: 60px;
-      flex-wrap: wrap;
-    }
-    .product-item {
-      text-align: center;
-      width: 180px;
-      min-height: 250px;
-    }
-    .product-item img {
-      width: 150px;
-    }
+    .product-wrapper {
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  background-color: white;
+  padding: 40px;
+    position: relative;     /* thêm dòng này */
+  top: 100px;  
+}
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  justify-content: center; /* căn giữa khối */
+}
+
+.product-item {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.product-item img {
+  width: 130px; /* Tăng kích thước hình */
+  height: auto;
+  margin-bottom: 8px;
+}
+.arrow {
+  color: #c2a875;
+  margin-right: 8px;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.arrow.rotated {
+  transform: rotate(90deg);
+}
+
   </style>
 </head>
 <body>
 
   <!-- TOPBAR -->
   <div class="topbar">
-    <div><a href="#"><i class="fas fa-credit-card"></i> Thanh Toán</a> | 
-         <a href="#"><i class="fas fa-heart"></i> Yêu Thích</a></div>
+    <div><a href="#"><i class="fas fa-credit-card"></i> Thanh Toán</a> |
+      <a href="#"><i class="fas fa-heart"></i> Yêu Thích</a>
+    </div>
     <div><i class="fas fa-phone"></i> Hotline: 092.224.8509</div>
   </div>
 
   <!-- HEADER -->
   <div class="header">
     <div class="logo"><a href="#">Lakafé <span>VN</span></a></div>
-    <div class="search-box">
-      <input type="text" placeholder="Tìm kiếm sản phẩm...">
-      <button><i class="fas fa-search"></i></button>
-    </div>
+
+   <form class="search-box" onsubmit="searchProducts(); return false;">
+  <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+</form>
     <div class="cart">
       <a href="#"><i class="fas fa-shopping-cart"></i> Giỏ hàng (0)</a>
     </div>
@@ -197,9 +296,7 @@
 
   <!-- SIDEBAR -->
   <div class="sidebar">
-    <div class="sidebar-header">
-      ☰ Menu
-    </div>
+    <div class="sidebar-header">☰ Menu</div>
     <div class="menu">
       <div class="menu-item has-submenu">
         <span class="arrow">&raquo;</span> Milk Tea
@@ -209,115 +306,124 @@
           <li class="submenu-item">Socola</li>
         </ul>
       </div>
-        <div class="menu-item has-submenu">
-  <span class="arrow">&raquo;</span> Matcha
-  <ul class="submenu">
-    <li class="submenu-item">Matcha Latte</li>
-    <li class="submenu-item">Matcha Kem Cheese</li>
-    <li class="submenu-item">Matcha Đậu đỏ</li>
-  </ul>
-</div>
       <div class="menu-item has-submenu">
-  <span class="arrow">&raquo;</span> Coffee
-  <ul class="submenu">
-    <li class="submenu-item">Cà phê sữa</li>
-    <li class="submenu-item">Cà phê đen</li>
-    <li class="submenu-item">Bạc xỉu</li>
-    <li class="submenu-item">Cà phê kem cheese</li>
-  </ul>
-</div>
-     <div class="menu-item has-submenu">
-  <span class="arrow">&raquo;</span> Soda
-  <ul class="submenu">
-    <li class="submenu-item">Soda Dâu</li>
-    <li class="submenu-item">Soda Việt Quất</li>
-    <li class="submenu-item">Soda Chanh</li>
-    <li class="submenu-item">Soda Kiwi</li>
-  </ul>
-</div>
-<div class="menu-item has-submenu">
-  <span class="arrow">&raquo;</span> Fruit Tea
-  <ul class="submenu">
-    <li class="submenu-item">Trà Đào</li>
-    <li class="submenu-item">Trà Vải</li>
-    <li class="submenu-item">Trà Dâu</li>
-    <li class="submenu-item">Trà Cam Xả</li>
-  </ul>
-</div>
+        <span class="arrow">&raquo;</span> Matcha
+        <ul class="submenu">
+          <li class="submenu-item">Matcha Latte</li>
+          <li class="submenu-item">Matcha Kem Cheese</li>
+          <li class="submenu-item">Matcha Đậu đỏ</li>
+        </ul>
+      </div>
+      <div class="menu-item has-submenu">
+        <span class="arrow">&raquo;</span> Coffee
+        <ul class="submenu">
+          <li class="submenu-item">Cà phê sữa</li>
+          <li class="submenu-item">Cà phê đen</li>
+          <li class="submenu-item">Bạc xỉu</li>
+          <li class="submenu-item">Cà phê kem cheese</li>
+        </ul>
+      </div>
+      <div class="menu-item has-submenu">
+        <span class="arrow">&raquo;</span> Soda
+        <ul class="submenu">
+          <li class="submenu-item">Soda Dâu</li>
+          <li class="submenu-item">Soda Việt Quất</li>
+          <li class="submenu-item">Soda Chanh</li>
+          <li class="submenu-item">Soda Kiwi</li>
+        </ul>
+      </div>
+      <div class="menu-item has-submenu">
+        <span class="arrow">&raquo;</span> Fruit Tea
+        <ul class="submenu">
+          <li class="submenu-item">Trà Đào</li>
+          <li class="submenu-item">Trà Vải</li>
+          <li class="submenu-item">Trà Dâu</li>
+          <li class="submenu-item">Trà Cam Xả</li>
+        </ul>
+      </div>
+      <div class="menu-item has-submenu">
+        <span class="arrow">&raquo;</span> Houjicha
+        <ul class="submenu">
+          <li class="submenu-item">Houjicha Latte</li>
+        </ul>
+      </div>
+      <div class="menu-item has-submenu">
+        <span class="arrow">&raquo;</span> Cacao
+        <ul class="submenu">
+          <li class="submenu-item">Cacao Kem Cheese</li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <!-- BANNER -->
-  <div class="image-container">
-    <img id="slider" src="hinh4.png" alt="Hình 4">
+  <div class="banner-wrapper">
+    <img id="slider" src="hinh4.png" alt="Banner">
   </div>
 
-  <!-- DANH SÁCH SẢN PHẨM -->
+  <!-- TIÊU ĐỀ -->
+  <div style="text-align: center;">
+    <div class="section-title">TRÀ SỮA</div>
+  </div>
+  <p id="noResultsMessage" style="display:none; color:red; text-align:center; font-size:16px; margin-bottom: 10px;">
+  Không tìm thấy sản phẩm nào
+</p>
+  <!-- SẢN PHẨM -->
   <div class="product-list">
-  <!-- Cột dọc: Trà Đào + Tứ Quý -->
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
-    <div class="product-item">
-      <img src="tradao.png" alt="Trà đào">
-      <div style="margin-top: 8px;">
-        <span style="font-weight: bold;">Trà Đào</span><br>
-        <span>35.000₫</span>
-      </div>
-    </div>
-
-    <div class="product-item">
-      <img src="tuquy.png" alt="Tứ Quý">
-      <div style="margin-top: 8px;">
-        <span style="font-weight: bold;">Tứ Quý</span><br>
-        <span>40.000₫</span>
-      </div>
-    </div>
+    <p id="noResultsMessage" style="display:none; color:red; text-align:center; font-size:16px; margin-top: 10px;">
+  Không tìm thấy sản phẩm nào.
+</p>
+  <div class="product-item" data-name="trà đào">
+    <img src="tradao.png" alt="Trà đào">
+    <div><strong>Trà Đào</strong><br>35.000₫</div>
   </div>
-
-
-    <div class="product-item">
-      <img src="matcha.png" alt="Matcha">
-      <div style="margin-top: 8px;">
-        <span style="font-weight: bold;">Matcha</span><br>
-        <span>40.000₫</span>
-      </div>
-    </div>
-
-    <div class="product-item">
-      <img src="hatsen.png" alt="Hạt sen">
-      <div style="margin-top: 8px;">
-        <span style="font-weight: bold;">Trà Sen</span><br>
-        <span>38.000₫</span>
-      </div>
-    </div>
-
-    <div class="product-item">
-      <img src="cacao.png" alt="Cacao">
-      <div style="margin-top: 8px;">
-        <span style="font-weight: bold;">Cacao</span><br>
-        <span>40.000₫</span>
-      </div>
-    </div>
-
-    <div class="product-item">
-      <img src="cafe.png" alt="Cafe">
-      <div style="margin-top: 8px;">
-        <span style="font-weight: bold;">Cafe</span><br>
-        <span>18.000₫</span>
-      </div>
-    </div>
-
-    <div class="product-item">
-      <img src="houcha.png" alt="Houcha">
-      <div style="margin-top: 8px;">
-        <span style="font-weight: bold;">Houcha</span><br>
-        <span>18.000₫</span>
-      </div>
-    </div>
+  <div class="product-item" data-name="tứ quý">
+    <img src="tuquy.png" alt="Tứ Quý">
+    <div><strong>Tứ Quý</strong><br>40.000₫</div>
   </div>
-
+  <div class="product-item" data-name="matcha">
+    <img src="matcha.png" alt="Matcha">
+    <div><strong>Matcha</strong><br>40.000₫</div>
+  </div>
+  <div class="product-item" data-name="trà sen">
+    <img src="hatsen.png" alt="Trà Sen">
+    <div><strong>Trà Sen</strong><br>38.000₫</div>
+  </div>
+  <div class="product-item" data-name="cacao">
+    <img src="cacao.png" alt="Cacao">
+    <div><strong>Cacao</strong><br>40.000₫</div>
+  </div>
+  <div class="product-item" data-name="cafe">
+    <img src="cafe.png" alt="Cafe">
+    <div><strong>Cafe</strong><br>18.000₫</div>
+  </div>
+  <div class="product-item" data-name="houcha">
+    <img src="houcha.png" alt="Houcha">
+    <div><strong>Houcha</strong><br>18.000₫</div>
+  </div>
+  <div class="product-item" data-name="houcha">
+    <img src="houcha.png" alt="Houcha">
+    <div><strong>Houcha</strong><br>18.000₫</div>
+  </div>
+  <div class="product-item" data-name="houcha">
+    <img src="houcha.png" alt="Houcha">
+    <div><strong>Houcha</strong><br>18.000₫</div>
+  </div>
+  <div class="product-item" data-name="houcha">
+    <img src="houcha.png" alt="Houcha">
+    <div><strong>Houcha</strong><br>18.000₫</div>
+  </div>
+  <div class="product-item" data-name="houcha">
+    <img src="houcha.png" alt="Houcha">
+    <div><strong>Houcha</strong><br>18.000₫</div>
+  </div>
+  <div class="product-item" data-name="houcha">
+    <img src="houcha.png" alt="Houcha">
+    <div><strong>Houcha</strong><br>18.000₫</div>
+  </div>
+</div>
   <!-- SCRIPT -->
   <script>
-    // Ảnh trượt
     const images = ["hinh4.png", "hinh3.png"];
     let index = 0;
     function updateImage() {
@@ -333,18 +439,40 @@
       updateImage();
     }
     setInterval(nextImage, 3000);
-
-    // Bấm mũi tên để hiện submenu
-    document.addEventListener("DOMContentLoaded", function () {
-      document.querySelectorAll('.menu-item.has-submenu .arrow').forEach(arrow => {
-        arrow.addEventListener('click', function (e) {
-          e.stopPropagation();
-          const parent = arrow.closest('.menu-item');
-          parent.classList.toggle('active');
-        });
-      });
-    });
   </script>
+  <script>
+  document.querySelectorAll('.menu-item.has-submenu').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('active'); // Hiện/ẩn submenu
+      const arrow = item.querySelector('.arrow');
+      arrow.classList.toggle('rotated'); // Xoay mũi tên
+    });
+  });
+</script>
+<script>
+  function searchProducts() {
+    const keyword = document.getElementById("searchInput").value.toLowerCase();
+    const products = document.querySelectorAll(".product-item");
+    let found = 0;
 
+    products.forEach(product => {
+      const name = product.getAttribute("data-name").toLowerCase();
+      if (name.includes(keyword)) {
+        product.style.display = "";
+        found++;
+      } else {
+        product.style.display = "none";
+      }
+    });
+
+    const message = document.getElementById("noResultsMessage");
+    if (found === 0) {
+      message.style.display = "block";
+    } else {
+      message.style.display = "none";
+    }
+  }
+</script>
 </body>
+
 </html>
