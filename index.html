@@ -213,6 +213,18 @@
   transform: scale(1.05);
   cursor: pointer;
 }
+.section-header {
+  display: flex;
+  justify-content: center;
+  margin: 60px 0 20px;
+}
+.section-title.lifted {
+  position: relative;
+  top: -10px; /* lên trên 10px, chỉnh lại giá trị nếu muốn ít/hơn */
+}
+.section-title.lifted {
+  margin-top: -10px; /* kéo lên 10px */
+}
 
 
     /* SẢN PHẨM */
@@ -226,7 +238,7 @@
 }
 .product-list {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   padding: 20px;
   background-color: white;
@@ -247,6 +259,45 @@
   width: 130px; /* Tăng kích thước hình */
   height: auto;
   margin-bottom: 8px;
+}
+/* Modal giới thiệu */
+#aboutOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
+.about-modal {
+  background: #fff;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 30px 25px;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.about-modal h2 {
+  margin-top: 0;
+  color: #e60f0f;
+  font-size: 28px;
+}
+.about-modal p { margin: 12px 0; }
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  color: #333;
 }
 .arrow {
   color: #c2a875;
@@ -277,7 +328,10 @@
     <div class="logo"><a href="#">Lakafé <span>VN</span></a></div>
 
    <form class="search-box" onsubmit="searchProducts(); return false;">
-  <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+  <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm">
+  <button type="submit" id="searchBtn" aria-label="Tìm kiếm">
+    <i class="fas fa-search"></i>
+  </button>
 </form>
     <div class="cart">
       <a href="#"><i class="fas fa-shopping-cart"></i> Giỏ hàng (0)</a>
@@ -287,7 +341,7 @@
   <!-- MENU NGANG -->
   <nav class="top-menu">
     <a href="#">Trang chủ</a>
-    <a href="#">Giới thiệu</a>
+<a href="#" id="about-link">Giới thiệu</a>
     <a href="#">Sản phẩm</a>
     <a href="#">Khuyến mãi</a>
     <a href="#">Liên hệ</a>
@@ -360,67 +414,57 @@
     <img id="slider" src="hinh4.png" alt="Banner">
   </div>
 
-  <!-- TIÊU ĐỀ -->
-  <div style="text-align: center;">
-    <div class="section-title">TRÀ SỮA</div>
-  </div>
-  <p id="noResultsMessage" style="display:none; color:red; text-align:center; font-size:16px; margin-bottom: 10px;">
+ <!-- TIÊU ĐỀ COFFEE -->
+<div class="section-header">
+  <div class="section-title" onclick="showCategory('coffee')">COFFEE</div>
+</div>
+
+<p id="noResultsMessage" style="display:none; color:red; text-align:center; font-size:16px; margin-bottom: 10px;">
   Không tìm thấy sản phẩm nào
 </p>
-  <!-- SẢN PHẨM -->
-  <div class="product-list">
-    <p id="noResultsMessage" style="display:none; color:red; text-align:center; font-size:16px; margin-top: 10px;">
-  Không tìm thấy sản phẩm nào.
-</p>
-  <div class="product-item" data-name="trà đào">
-    <img src="tradao.png" alt="Trà đào">
-    <div><strong>Trà Đào</strong><br>35.000₫</div>
+
+<!-- DANH SÁCH SẢN PHẨM COFFEE -->
+<div class="product-list">
+  <div class="product-item" data-name="Bạc xỉu">
+    <img src="bacxiu.png" alt="Bạc xỉu">
+    <div><strong>Bạc Xỉu</strong><br>18.000₫</div>
   </div>
-  <div class="product-item" data-name="tứ quý">
-    <img src="tuquy.png" alt="Tứ Quý">
-    <div><strong>Tứ Quý</strong><br>40.000₫</div>
+  <div class="product-item" data-name="cà phê đen">
+    <img src="cafeden.png" alt="cà phê đen">
+    <div><strong>Cafe Đen</strong><br>35.000₫</div>
   </div>
-  <div class="product-item" data-name="matcha">
-    <img src="matcha.png" alt="Matcha">
-    <div><strong>Matcha</strong><br>40.000₫</div>
+  <div class="product-item" data-name="cà phê sữa">
+    <img src="cafesua.png" alt="cà phê sữa">
+    <div><strong>Cafe Sữa</strong><br>35.000₫</div>
   </div>
-  <div class="product-item" data-name="trà sen">
-    <img src="hatsen.png" alt="Trà Sen">
-    <div><strong>Trà Sen</strong><br>38.000₫</div>
+  <div class="product-item" data-name="cà phê muối">
+    <img src="cafemuoi.png" alt="cà phê muối">
+    <div><strong>Cafe Muối</strong><br>35.000₫</div>
   </div>
-  <div class="product-item" data-name="cacao">
-    <img src="cacao.png" alt="Cacao">
-    <div><strong>Cacao</strong><br>40.000₫</div>
-  </div>
-  <div class="product-item" data-name="cafe">
-    <img src="cafe.png" alt="Cafe">
-    <div><strong>Cafe</strong><br>18.000₫</div>
-  </div>
-  <div class="product-item" data-name="houcha">
-    <img src="houcha.png" alt="Houcha">
-    <div><strong>Houcha</strong><br>18.000₫</div>
-  </div>
-  <div class="product-item" data-name="houcha">
-    <img src="houcha.png" alt="Houcha">
-    <div><strong>Houcha</strong><br>18.000₫</div>
-  </div>
-  <div class="product-item" data-name="houcha">
-    <img src="houcha.png" alt="Houcha">
-    <div><strong>Houcha</strong><br>18.000₫</div>
-  </div>
-  <div class="product-item" data-name="houcha">
-    <img src="houcha.png" alt="Houcha">
-    <div><strong>Houcha</strong><br>18.000₫</div>
-  </div>
-  <div class="product-item" data-name="houcha">
-    <img src="houcha.png" alt="Houcha">
-    <div><strong>Houcha</strong><br>18.000₫</div>
-  </div>
-  <div class="product-item" data-name="houcha">
-    <img src="houcha.png" alt="Houcha">
-    <div><strong>Houcha</strong><br>18.000₫</div>
+  <div class="product-item" data-name="latte cafe">
+    <img src="cafemuoi.png" alt="latte cafe">
+    <div><strong>Latte Cafe</strong><br>35.000₫</div>
   </div>
 </div>
+
+<!-- TIÊU ĐỀ TRÀ SỮA -->
+<div class="section-header">
+  <div class="section-title lifted">Trà Sữa</div>
+</div>
+
+<!-- DANH SÁCH SẢN PHẨM TRÀ SỮA -->
+<div class="product-list">
+  <div class="product-item" data-name="trà sữa truyền thống">
+    <img src="tuquy.png" alt="Trà sữa truyền thống">
+    <div><strong>Trà Sữa Truyền Thống</strong><br>25.000₫</div>
+  </div>
+ <div class="product-item" data-name="sữa tươi trân châu đường đen">
+    <img src="tsduongden.png" alt="tsduongden">
+    <div><strong>Sữa Tươi Trân Châu Đường Đen</strong><br>35.000₫</div>
+  </div>
+  
+</div>
+
   <!-- SCRIPT -->
   <script>
     const images = ["hinh4.png", "hinh3.png"];
@@ -471,7 +515,54 @@
       message.style.display = "none";
     }
   }
+  
 </script>
+<!-- GIỚI THIỆU (MODAL) -->
+<div id="aboutOverlay" style="display:none;">
+  <div class="about-modal">
+    <button class="close-btn" aria-label="Đóng">&times;</button>
+    <h2>Giới thiệu Lakafé VN</h2>
+    <p>Chào mừng bạn đến với <strong>Lakafé VN</strong> – nơi hội tụ hương vị trà sữa...</p>
+    <div style="margin-top:12px;">
+      <p><strong>Địa chỉ:</strong><br>
+        209/C3 Ấp Đức Long 3, Xã Gia Tân 2, Huyện Thống Nhất,<br>
+        Tỉnh Đồng Nai, Vietnam
+      </p>
+      <p><strong>Hotline:</strong> <a href="tel:0922248509">092 224 85 09</a><br>
+         <strong>Email:</strong> <a href="mailto:lakafevn@gmail.com">lakafevn@gmail.com</a></p>
+      <p><strong>Chỉ đường:</strong><br>
+        <a href="https://maps.app.goo.gl/dGcKYaMz2VQ5yhEA9?g_st=com.google.maps.preview.copy" target="_blank" rel="noopener noreferrer">Xem trên bản đồ </a>
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const aboutLink = document.getElementById("about-link");
+    const overlay = document.getElementById("aboutOverlay");
+    const closeBtn = document.querySelector(".close-btn");
+
+    if (aboutLink) {
+      aboutLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        overlay.style.display = "flex";
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        overlay.style.display = "none";
+      });
+    }
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = "none";
+      }
+    });
+  });
+</script>
+</div>
 </body>
 
 </html>
